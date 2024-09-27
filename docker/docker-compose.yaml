@@ -273,6 +273,7 @@ services:
   superset:
     build: ./superset
     container_name: superset
+    profiles: ["superset"]
     ports:
       - "3000:8088"
     networks:

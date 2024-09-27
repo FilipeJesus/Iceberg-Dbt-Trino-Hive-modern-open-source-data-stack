@@ -80,7 +80,7 @@ To get started with Apache Superset, follow these steps to pull and run the Supe
    - Password: `admin`
 
 3. **Add Trino Database Connection**:
-   Add a new database connection 'Trino'. The host sqlalchemy url for this source should be `trino://admin@trino:8080/website`.
+   Add a new database connection 'Trino'. The host sqlalchemy url for this source should be `trino://admin@trino:8080/datalake`.
 
 4. **Create event listen dataset**:
    Create the listen_events dataset in the demo schema of the trino database 

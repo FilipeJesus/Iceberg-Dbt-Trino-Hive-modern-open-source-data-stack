@@ -65,7 +65,7 @@ dbt run
 
 ## Get Superset
 
-To get started with Apache Superset, follow the below instructions. These instructions will require you to be familiar with setting up databases, datasets and charts in 
+To get started with Apache Superset, follow these steps to pull and run the Superset Docker image. Ensure you have Docker installed and running on your machine.
 
 1. **Start the Superset service**:
    Superset is an optional profile in the docker compose file you used earlier. To start Superset simply specify the service when running docker compose.

@@ -67,15 +67,20 @@ dbt run
 
 To get started with Apache Superset, follow the below instructions. These instructions will require you to be familiar with setting up databases, datasets and charts in 
 
-1. **Start Using Superset**:
+1. **Start the Superset service**:
+   Superset is an optional profile in the docker compose file you used earlier. To start Superset simply specify the service when running docker compose.
+   ```
+   cd docker
+   docker compose up --build -d superset
+   ```
+
+2. **Start Using Superset**:
    Access Superset at `http://localhost:3000` with the default credentials:
    - Username: `admin`
    - Password: `admin`
 
-2. **Add Trino Database Connection**:
+3. **Add Trino Database Connection**:
    Add a new database connection 'Trino'. The host sqlalchemy url for this source should be `trino://admin@trino:8080/website`.
 
-3. **Create event listen dataset**:
+4. **Create event listen dataset**:
    Create the listen_events dataset in the demo schema of the trino database 
-
-   

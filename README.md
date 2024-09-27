@@ -65,49 +65,17 @@ dbt run
 
 ## Get Superset
 
-To get started with Apache Superset, follow these steps to pull and run the Superset Docker image. Ensure you have Docker installed and running on your machine.
+To get started with Apache Superset, follow the below instructions. These instructions will require you to be familiar with setting up databases, datasets and charts in 
 
-1. **Set Superset Version**:
-   Set the `SUPERSET_VERSION` environment variable with the latest Superset version. Check the [Apache Superset releases](https://github.com/apache/superset/releases) for the latest version.
-   ```
-   export SUPERSET_VERSION=<latest_version>
-   ```
-
-2. **Pull Superset Image**:
-   Pull the Superset image from Docker Hub.
-   ```
-   docker pull apache/superset:$SUPERSET_VERSION
-   ```
-
-3. **Start Superset**:
-   Note that Superset requires a user-specified value of `SECRET_KEY` or `SUPERSET_SECRET_KEY` as an environment variable to start.
-   ```
-   docker run -d -p 3000:8088 \
-              -e "SUPERSET_SECRET_KEY=$(openssl rand -base64 42)" \
-              -e "TALISMAN_ENABLED=False" \
-              --name superset apache/superset:$SUPERSET_VERSION
-   ```
-
-4. **Create an Account**:
-   Create an admin account in Superset.
-   ```
-   docker exec -it superset superset fab create-admin \
-               --username admin \
-               --firstname Admin \
-               --lastname Admin \
-               --email admin@localhost \
-               --password admin
-   ```
-
-5. **Configure Superset**:
-   Configure the database and load example data.
-   ```
-   docker exec -it superset superset db upgrade && \
-          docker exec -it superset superset load_examples && \
-          docker exec -it superset superset init
-   ```
-   
-6. **Start Using Superset**:
-   After configuration, access Superset at `http://localhost:8080` with the default credentials:
+1. **Start Using Superset**:
+   Access Superset at `http://localhost:3000` with the default credentials:
    - Username: `admin`
    - Password: `admin`
+
+2. **Add Trino Database Connection**:
+   Add a new database connection 'Trino'. The host sqlalchemy url for this source should be `trino://admin@trino:8080/website`.
+
+3. **Create event listen dataset**:
+   Create the listen_events dataset in the demo schema of the trino database 
+
+   

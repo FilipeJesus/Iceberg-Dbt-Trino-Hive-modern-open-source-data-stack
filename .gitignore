@@ -1,0 +1,7 @@
+package-lock.yml
+target
+logs
+dbt_packages
+dbt-env
+.user.yml
+.DS_Store

@@ -1,4 +1,4 @@
-version: "3.9" 
+version: "3" 
 services:
   oltp:
     image: postgres:latest
@@ -34,7 +34,6 @@ services:
       kafka:
         ipv4_address: 172.20.0.14 
 
-   
   trino:
     hostname: trino
     container_name: trino
@@ -252,7 +251,7 @@ services:
     networks:
       kafka:
         ipv4_address: 172.20.0.9     
-     
+
   rest-proxy:
     image: confluentinc/cp-kafka-rest:7.5.0
     depends_on:
@@ -269,7 +268,16 @@ services:
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
     networks:
       kafka:
-        ipv4_address: 172.20.0.10     
+        ipv4_address: 172.20.0.10   
+
+  superset:
+    build: ./superset
+    container_name: superset
+    ports:
+      - "3000:8088"
+    networks:
+      kafka:
+        ipv4_address: 172.20.0.17
 
 networks:
   kafka:
@@ -277,6 +285,3 @@ networks:
     ipam:
       config:
         - subnet: 172.20.0.0/16     
-
-
-
